@@ -38,24 +38,21 @@ class RandomNumberTest {
     }
 
     @Test
-    void istToIntNumberTest(){
-        List<Integer> list = Arrays.asList(4,3,5);
+    void randomNumberClassTest(){
+        RandomNumber randomNumber = new RandomNumber();
 
-        int number = list.stream()
-                .mapToInt(
-                        num -> num * (int) Math.pow(
-                                10,
-                                list.indexOf(num)
-                        )
-                )
-                .reduce(0, Integer::sum);
-
-        assertEquals(534, number);
+        assertTrue(checkNumber(randomNumber.getRandomNumber(),0));
+        assertTrue(checkNumber(randomNumber.getRandomNumber(),1));
+        assertTrue(checkNumber(randomNumber.getRandomNumber(),2));
 
     }
 
     boolean checkNumber(int number) {
         return number > 0 && number < 10;
+    }
+
+    boolean checkNumber(List<Integer> numberList, int index) {
+        return numberList.get(index) > 0 && numberList.get(index) < 10;
     }
 
 }

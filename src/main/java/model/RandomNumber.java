@@ -7,9 +7,15 @@ import java.util.Random;
 
 public class RandomNumber {
 
+    private List<Integer> number;
+
     private final int RANDOM_NUMBER_SIZE = 3;
 
-    public int createRandomNumbers() {
+    public RandomNumber(){
+        this.number = createRandomNumbers();
+    }
+
+    private List<Integer> createRandomNumbers() {
         List<Integer> numberArray = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         List<Integer> randomNumbers = new ArrayList<>();
 
@@ -18,7 +24,7 @@ public class RandomNumber {
 
             int numberArraySize = numberArray.size();
 
-            int arrayIndex = random.nextInt(numberArraySize) + 1;
+            int arrayIndex = random.nextInt(numberArraySize);
 
             int number = numberArray.get(arrayIndex);
 
@@ -26,19 +32,11 @@ public class RandomNumber {
             numberArray.remove(arrayIndex);
         }
 
-        return ListToIntNumber(randomNumbers);
+        return randomNumbers;
     }
 
-    public int ListToIntNumber(List<Integer> list) {
-        return list.stream()
-                .mapToInt(
-                    num -> num * (int) Math.pow(
-                            10,
-                            list.indexOf(num)
-                    )
-                )
-                .reduce(0, Integer::sum);
+    public List<Integer> getRandomNumber(){
+        return this.number;
     }
-
 
 }
