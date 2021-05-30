@@ -9,18 +9,16 @@ public class RandomNumber {
 
     private final int RANDOM_NUMBER_SIZE = 3;
 
-    public List<Integer> createRandomNumbers() {
-        Random random = new Random();
-
+    public int createRandomNumbers() {
         List<Integer> numberArray = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-
         List<Integer> randomNumbers = new ArrayList<>();
 
-        while(randomNumbers.size() != RANDOM_NUMBER_SIZE) {
+        while (randomNumbers.size() != RANDOM_NUMBER_SIZE) {
+            Random random = new Random();
 
             int numberArraySize = numberArray.size();
 
-            int arrayIndex = random.nextInt(numberArraySize);
+            int arrayIndex = random.nextInt(numberArraySize) + 1;
 
             int number = numberArray.get(arrayIndex);
 
@@ -28,7 +26,18 @@ public class RandomNumber {
             numberArray.remove(arrayIndex);
         }
 
-        return randomNumbers;
+        return ListToIntNumber(randomNumbers);
+    }
+
+    public int ListToIntNumber(List<Integer> list) {
+        return list.stream()
+                .mapToInt(
+                    num -> num * (int) Math.pow(
+                            10,
+                            list.indexOf(num)
+                    )
+                )
+                .reduce(0, Integer::sum);
     }
 
 
