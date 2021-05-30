@@ -1,10 +1,8 @@
 package model;
 
 public class Score {
-    private int ball;
-    private int strike;
-
-    public Score(){}
+    private int ball = 0;
+    private int strike = 0;
 
     public void addBall(boolean isBall){
         if(isBall) {
@@ -25,4 +23,13 @@ public class Score {
     public int strikeCount(){
         return this.strike;
     }
+
+    public boolean isNothing(){
+        return ballCount() == 0 && strikeCount() == 0;
+    }
+
+    public boolean isGameEnd(){
+        return strikeCount() >= 3;
+    }
+
 }

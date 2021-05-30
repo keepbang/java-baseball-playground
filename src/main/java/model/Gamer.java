@@ -1,44 +1,28 @@
 package model;
 
-import java.util.ArrayList;
+import view.InputView;
+import view.OutputVIew;
+
+import java.util.List;
 
 public class Gamer {
 
-    public Score checkNumber(ArrayList<Integer> computerNumbers, int number) {
+    private boolean gameState = true;
 
-        Score score = new Score();
+    public void playGame(List<Integer> computerNumbers){
+        InputView input = new InputView();
+        OutputVIew output = new OutputVIew();
+        Baseball baseball = new Baseball();
 
-        for (int i = computerNumbers.size() - 1; i > -1; i--) {
-            int checkNum = number % 10;
-            number /= 10;
+        while(gameState){
+            output.number();
+            int number = input.number();
 
-            boolean isStrike = strikeCheck(computerNumbers.get(i), checkNum);
+            Score score = baseball.checkNumber(computerNumbers, number);
 
-            score.addStrike(isStrike);
 
-            score.addBall(ballCheck(computerNumbers, checkNum, isStrike));
         }
 
-        return score;
-    }
-
-    private boolean strikeCheck(int computerNumber, int checkNum) {
-        if (computerNumber == checkNum) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean ballCheck(ArrayList<Integer> computerNumbers, int checkNum, boolean isStrike) {
-        if (isStrike) {
-            return false;
-        }
-
-        if (computerNumbers.contains(checkNum)) {
-            return true;
-        }
-
-        return false;
     }
 
 }
