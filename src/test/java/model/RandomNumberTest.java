@@ -2,12 +2,12 @@ package model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RandomNumberTest {
-
     @Test
     void randomNumberTest(){
         RandomNumber randomNumber = new RandomNumber();
@@ -22,7 +22,7 @@ class RandomNumberTest {
     }
 
     boolean checkNumber(int number){
-        return number > 1 && number < 10;
+        return number > 0 && number < 10;
     }
 
 }
