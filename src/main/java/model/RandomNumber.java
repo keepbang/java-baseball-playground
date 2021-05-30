@@ -7,16 +7,20 @@ import java.util.Random;
 
 public class RandomNumber {
 
+    private List<Integer> number;
+
     private final int RANDOM_NUMBER_SIZE = 3;
 
-    public List<Integer> createRandomNumbers() {
-        Random random = new Random();
+    public RandomNumber(){
+        this.number = createRandomNumbers();
+    }
 
+    private List<Integer> createRandomNumbers() {
         List<Integer> numberArray = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-
         List<Integer> randomNumbers = new ArrayList<>();
 
-        while(randomNumbers.size() != RANDOM_NUMBER_SIZE) {
+        while (randomNumbers.size() != RANDOM_NUMBER_SIZE) {
+            Random random = new Random();
 
             int numberArraySize = numberArray.size();
 
@@ -31,5 +35,8 @@ public class RandomNumber {
         return randomNumbers;
     }
 
+    public List<Integer> getRandomNumber(){
+        return this.number;
+    }
 
 }
