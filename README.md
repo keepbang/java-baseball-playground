@@ -24,3 +24,8 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+1. 랜덤한 숫자를 만들어냄
+2. 랜덤한 숫자를 받아서 볼인지 스트라이크인지 체크
+3. 3개의 숫자를 모두 맞췄을 경우 게임 종료
+4. 게임 재시작(1)/종료(2)
