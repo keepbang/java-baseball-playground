@@ -6,14 +6,6 @@ public class Inning {
     private int round;
     private int batting;
 
-    private int getRound() {
-        return this.round;
-    }
-
-    private int getBatting() {
-        return this.batting;
-    }
-
     private boolean isBall(Inning inning){
         return getRound() != inning.getRound() && getBatting() == inning.getBatting();
     }
@@ -21,6 +13,12 @@ public class Inning {
     private boolean isStrike(Inning inning){
         return getRound() == inning.getRound() && getBatting() == inning.getBatting();
     }
+
+    public int getRound() {
+        return this.round;
+    }
+
+    public int getBatting() { return this.batting; }
 
     public Inning(int round, int batting){
         this.round = round;
