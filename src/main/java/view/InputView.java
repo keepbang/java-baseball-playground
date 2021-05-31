@@ -9,7 +9,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public int inputGameState(){
+    public int isGameReset(){
         return scanner.nextInt();
     }
 }

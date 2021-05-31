@@ -1,25 +1,24 @@
 package model;
 
 import view.InputView;
-import view.OutputVIew;
+import view.OutputView;
 
 import java.util.List;
 
-public class Gamer {
+public class Gamer extends Baseball {
 
-    private boolean gameState = true;
+    InputView input = new InputView();
 
-    public void playGame(List<Integer> computerNumbers){
-        InputView input = new InputView();
-        OutputVIew output = new OutputVIew();
-        Baseball baseball = new Baseball();
+    OutputView output = new OutputView();
 
-        while(gameState){
+    public void playGame(List<Integer> computerNumbers) {
+        boolean gameState = true;
+
+        while (gameState) {
             output.number();
             int number = input.number();
 
-            Score score = baseball.checkNumber(computerNumbers, number);
-
+            gameState = checkNumber(computerNumbers, number);
 
         }
 
