@@ -1,7 +1,5 @@
 package model;
 
-import utils.NumberValidationUtils;
-
 import static model.ScoreStatus.*;
 
 public class Inning {
