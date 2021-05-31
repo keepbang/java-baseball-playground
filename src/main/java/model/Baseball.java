@@ -1,10 +1,14 @@
 package model;
 
+import view.OutputView;
+
 import java.util.List;
 
 public class Baseball {
 
-    public Score checkNumber(List<Integer> computerNumbers, int number) {
+    public boolean checkNumber(List<Integer> computerNumbers, int number) {
+
+        OutputView output = new OutputView();
 
         Score score = new Score();
 
@@ -19,7 +23,13 @@ public class Baseball {
             score.addBall(ballCheck(computerNumbers, checkNum, isStrike));
         }
 
-        return score;
+        if(score.isGameEnd()){
+            output.gameEnd();
+            return false;
+        }
+
+        output.showResult(score);
+        return true;
     }
 
     private boolean strikeCheck(int computerNumber, int checkNum) {
