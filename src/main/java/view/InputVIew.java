@@ -28,7 +28,11 @@ public class InputVIew {
         return numberString;
     }
 
-    public GameResult endGameInput(){
+    public GameResult endGameInput(boolean isEndGame){
+        if(!isEndGame){
+            return GameResult.CONTINUE;
+        }
+
         output.endGameMessage();
 
         String endGameStatus = scanner.next();

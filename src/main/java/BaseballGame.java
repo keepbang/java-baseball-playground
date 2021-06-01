@@ -12,10 +12,8 @@ public class BaseballGame {
         
         while(!gameStatus.isEndGame()) {
 
-            if(gameStatus.isReset()) {
-                comBaseball = new ComBaseball(new RandomNumber().getStringNumber());
-                gameStatus = GameResult.CONTINUE;
-            }
+            gameStatus = comBaseball.resetBall(gameStatus);
+
             String number = input.numberString();
 
             PlayerBaseball playerBaseball = new PlayerBaseball(number);
@@ -26,12 +24,8 @@ public class BaseballGame {
 
             gameStatus = score.gameResult();
 
-            if(gameStatus.isEndGame()){
-                gameStatus = input.endGameInput();
-            }
+            gameStatus = input.endGameInput(gameStatus.isEndGame());
+
         }
-
-
-
     }
 }
