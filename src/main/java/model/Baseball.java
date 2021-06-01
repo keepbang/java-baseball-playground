@@ -17,9 +17,9 @@ public class Baseball {
         this.inningList = stringToInningList(numberString);
     }
 
-    public Score play(Baseball player){
+    public Score play(List<Inning> inningList){
         Score score = new Score();
-        for(Inning playerInning : player.getInningList()){
+        for(Inning playerInning : inningList){
             ScoreStatus status = this.play(playerInning);
             score.addBall(status);
             score.addStrike(status);
