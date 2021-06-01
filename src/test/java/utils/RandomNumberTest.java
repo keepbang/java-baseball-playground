@@ -1,7 +1,6 @@
 package utils;
 
 import model.RandomNumber;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RandomNumberTest {
 
     @Test
-    @DisplayName("랜덤_숫자_생성")
     void 랜덤_숫자_생성(){
         RandomNumber randomNumber = new RandomNumber();
 

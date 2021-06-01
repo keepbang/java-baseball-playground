@@ -41,7 +41,7 @@ public class RandomNumber implements ConstantValue {
 
     private String IntegerListToInningList(List<Integer> randomList){
         return randomList.stream()
-                        .map(i -> String.valueOf(i))
+                        .map(String::valueOf)
                         .collect(Collectors.joining());
     }
 
