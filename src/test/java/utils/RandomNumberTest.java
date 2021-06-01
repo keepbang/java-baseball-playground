@@ -1,26 +1,27 @@
 package utils;
 
+import model.RandomNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomNubmerUtilTest {
+public class RandomNumberTest {
 
     @Test
     @DisplayName("랜덤_숫자_생성")
     void 랜덤_숫자_생성(){
-        RandomNumberUtil randomNumber = new RandomNumberUtil();
+        RandomNumber randomNumber = new RandomNumber();
 
-        String numberStr = randomNumber.getNumber();
+        String numberStr = randomNumber.getStringNumber();
         int number = Integer.parseInt(numberStr);
 
-        assertThat(NumberValidationUtil.validLength(number)).isTrue();
+        assertThat(ValidationUtil.validLength(numberStr)).isTrue();
 
         for (int i = 0; i < numberStr.length(); i++) {
             int num = number % 10;
             number /= 10;
-            assertThat(NumberValidationUtil.validNum(num)).isTrue();
+            assertThat(ValidationUtil.validNum(num)).isTrue();
         }
 
 

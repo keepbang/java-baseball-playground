@@ -1,4 +1,6 @@
-package utils;
+package model;
+
+import utils.ConstantValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,17 +8,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import static utils.NumberValidationUtil.MAX_ROUND;
-
-public class RandomNumberUtil {
+public class RandomNumber implements ConstantValue {
     private String number;
 
-    public RandomNumberUtil() {
+    public RandomNumber() {
         List<Integer> numberList = new ArrayList(Arrays.asList(1,2,3,4,5,6,7,8,9));
         this.number = createRandomNumbers(numberList);
     }
 
-    public String getNumber(){
+    public String getStringNumber(){
         return this.number;
     }
 

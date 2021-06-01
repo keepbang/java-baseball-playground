@@ -1,6 +1,8 @@
 package model;
 
-public class Score {
+import utils.ConstantValue;
+
+public class Score implements ConstantValue {
     private int ball = 0;
     private int strike = 0;
 
@@ -29,6 +31,6 @@ public class Score {
     }
 
     public boolean isGameEnd(){
-        return strikeCount() >= 3;
+        return strikeCount() >= THREE_STRIKE;
     }
 }
