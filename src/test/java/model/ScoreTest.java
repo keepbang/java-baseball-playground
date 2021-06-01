@@ -59,7 +59,7 @@ class ScoreTest {
         Baseball computer = new ComBaseball(s1);
         Baseball player = new PlayerBaseball(s2);
 
-        return player.play(computer.getInningList());
+        return player.play(computer);
     }
 
 }

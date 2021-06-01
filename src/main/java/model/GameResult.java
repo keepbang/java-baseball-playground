@@ -3,7 +3,9 @@ package model;
 public enum GameResult {
     RESET, ENDGAME, CONTINUE;
 
-    public boolean isContinue(){
-        return this == CONTINUE;
+    public boolean isEndGame(){
+        return this == ENDGAME;
     }
+
+    public boolean isReset() { return this == RESET; }
 }
