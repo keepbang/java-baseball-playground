@@ -12,12 +12,11 @@ public class BaseballUtil {
         String[] strArray = s.trim().split("");
 
         return IntStream.range(
-                0,
-                s.length()
-        ).mapToObj(
-                index -> new Inning(
-                        index+1,
-                        Integer.parseInt(strArray[index])
-                )).collect(Collectors.toList());
+                    0,s.length()
+                ).mapToObj(
+                    index -> new Inning(
+                            index+1,
+                            Integer.parseInt(strArray[index]))
+                ).collect(Collectors.toList());
     }
 }

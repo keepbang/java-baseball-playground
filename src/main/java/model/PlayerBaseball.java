@@ -1,7 +1,8 @@
 package model;
 
 public class PlayerBaseball extends Baseball {
-    public PlayerBaseball(String numberString) {
-        super(numberString);
+
+    public PlayerBaseball(String numberString){
+        this.createBaseball(numberString);
     }
 }

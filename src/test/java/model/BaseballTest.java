@@ -13,7 +13,7 @@ public class BaseballTest {
     @Test
     @DisplayName("게임플레이어_볼_생성")
     void 게임플레이어_볼_생성(){
-        Baseball baseball = new Baseball("425");
+        PlayerBaseball baseball = new PlayerBaseball("425");
 
         List<Inning> inningList1 = baseball.getInningList();
         List<Inning> inningList2 = new ArrayList<>();

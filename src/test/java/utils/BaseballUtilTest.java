@@ -25,8 +25,8 @@ public class BaseballUtilTest {
         List<Inning> inningList2 = BaseballUtil.stringToInningList("532");
 
         for (int i = 0; i < 3; i++) {
-            assertThat(inningList1.get(i).getRound()).isEqualTo(inningList2.get(i).getBatting());
-            assertThat(inningList1.get(i).getRound()).isEqualTo(inningList2.get(i).getBatting());
+            assertThat(inningList1.get(i).getRound()).isEqualTo(inningList2.get(i).getRound());
+            assertThat(inningList1.get(i).getBatting()).isEqualTo(inningList2.get(i).getBatting());
         }
     }
 

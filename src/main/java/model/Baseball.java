@@ -1,9 +1,8 @@
 package model;
 
-import utils.BaseballUtil;
-
 import java.util.List;
 
+import static utils.BaseballUtil.*;
 import static model.ScoreStatus.*;
 
 public class Baseball {
@@ -14,8 +13,8 @@ public class Baseball {
         return inningList;
     }
 
-    public Baseball(String numberString){
-        this.inningList = BaseballUtil.stringToInningList(numberString);
+    public void createBaseball(String numberString){
+        this.inningList = stringToInningList(numberString);
     }
 
     public Score play(List<Inning> playerInnings){
