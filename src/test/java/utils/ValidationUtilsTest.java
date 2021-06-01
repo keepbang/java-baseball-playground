@@ -29,6 +29,8 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtil.isInteger("123-453")).isFalse();
         assertThat(ValidationUtil.isInteger("-123")).isFalse();
         assertThat(ValidationUtil.isInteger("+23")).isFalse();
+        assertThat(ValidationUtil.isInteger("342 232")).isFalse();
+        assertThat(ValidationUtil.isInteger("342 ")).isFalse();
     }
 
 }
