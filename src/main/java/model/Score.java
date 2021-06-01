@@ -2,6 +2,9 @@ package model;
 
 import utils.ConstantValue;
 
+import static model.GameResult.CONTINUE;
+import static model.GameResult.ENDGAME;
+
 public class Score implements ConstantValue {
     private int ball = 0;
     private int strike = 0;
@@ -32,5 +35,12 @@ public class Score implements ConstantValue {
 
     public boolean isGameEnd(){
         return strikeCount() >= THREE_STRIKE;
+    }
+
+    public GameResult gameResult() {
+        if(isGameEnd()){
+            return ENDGAME;
+        }
+        return CONTINUE;
     }
 }
