@@ -1,48 +1,30 @@
 package model;
 
-import utils.ConstantValue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-public class RandomNumber implements ConstantValue {
-    private String number;
+public class RandomNumber{
 
-    public RandomNumber() {
-        List<Integer> numberList = new ArrayList(Arrays.asList(1,2,3,4,5,6,7,8,9));
-        this.number = createRandomNumbers(numberList);
+    public String getNumberString(){
+        return createRandomNumbers();
     }
 
-    public String getStringNumber(){
-        return this.number;
+    private static class Cache {
+        public static final RandomNumber randomNumber = new RandomNumber();
     }
 
-    private String createRandomNumbers(List<Integer> numberList) {
-        List<Integer> randomList = new ArrayList<>();
-
-        while (randomList.size() != MAX_ROUND) {
-            Random random = new Random();
-
-            int numberArraySize = numberList.size();
-
-            int arrayIndex = random.nextInt(numberArraySize);
-
-            int number = numberList.get(arrayIndex);
-
-            randomList.add(number);
-            numberList.remove(arrayIndex);
-        }
-
-        return IntegerListToInningList(randomList);
+    public static String getInstance(){
+        return Cache.randomNumber.getNumberString();
     }
 
-    private String IntegerListToInningList(List<Integer> randomList){
-        return randomList.stream()
-                        .map(i -> String.valueOf(i))
-                        .collect(Collectors.joining());
+    public static String createRandomNumbers() {
+        return ThreadLocalRandom.current()
+                .ints(1,10)
+                .distinct()
+                .limit(3)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining());
     }
+
 
 }

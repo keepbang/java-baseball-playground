@@ -8,8 +8,7 @@ public class ComBaseball extends Baseball {
 
     public GameResult resetBall(GameResult status){
         if(status.isReset()){
-            this.createBaseball(
-                    new RandomNumber().getStringNumber());
+            this.createBaseball(RandomNumber.getInstance());
         }
 
         return GameResult.CONTINUE;

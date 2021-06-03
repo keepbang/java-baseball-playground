@@ -29,7 +29,7 @@ public class BaseballTest implements ConstantValue {
 
     @Test
     void 게임_결과_확인_검증(){
-        ComBaseball computer = new ComBaseball(new RandomNumber().getStringNumber());
+        ComBaseball computer = new ComBaseball(RandomNumber.getInstance());
         PlayerBaseball player = new PlayerBaseball("425");
 
 
