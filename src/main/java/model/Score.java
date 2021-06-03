@@ -1,8 +1,11 @@
 package model;
 
-import utils.ConstantValue;
+import static model.GameResult.CONTINUE;
+import static model.GameResult.ENDGAME;
+import static utils.ConstantValue.THREE_STRIKE;
 
-public class Score implements ConstantValue {
+//enum으로해볼것
+public class Score{
     private int ball = 0;
     private int strike = 0;
 
@@ -32,6 +35,13 @@ public class Score implements ConstantValue {
 
     public boolean isGameEnd(){
         return strikeCount() >= THREE_STRIKE;
+    }
+
+    public GameResult gameResult() {
+        if(this.isGameEnd()){
+            return ENDGAME;
+        }
+        return CONTINUE;
     }
 
 }

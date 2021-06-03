@@ -1,14 +1,13 @@
 package model;
 
 import org.junit.jupiter.api.Test;
-import utils.ConstantValue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BaseballTest implements ConstantValue {
+public class BaseballTest{
 
     @Test
     void 게임플레이어_볼_생성(){
@@ -32,8 +31,8 @@ public class BaseballTest implements ConstantValue {
         PlayerBaseball computer = new PlayerBaseball(RandomNumber.getInstance());
         PlayerBaseball player = new PlayerBaseball("425");
 
-        player.play(computer.getInningList());
 
-        assertThat(player.gameResult()).isIn(GameResult.CONTINUE,GameResult.ENDGAME);
+
+        assertThat(player.play(computer.getInningList()).gameResult()).isIn(GameResult.CONTINUE,GameResult.ENDGAME);
     }
 }

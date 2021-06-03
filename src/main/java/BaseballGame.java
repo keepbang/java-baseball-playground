@@ -1,6 +1,9 @@
 import model.*;
+import utils.ValidationUtil;
 import view.InputVIew;
 import view.OutputView;
+
+import java.util.Optional;
 
 public class BaseballGame {
     public static void main(String[] args) {
@@ -14,17 +17,34 @@ public class BaseballGame {
 
             comBaseball.resetBall(gameStatus);
 
-            String number = input.numberString();
+            boolean valid = false;
+            String numberString = "";
 
-            PlayerBaseball playerBaseball = new PlayerBaseball(number);
+            output.number();
+
+            while(!valid) {
+
+                numberString =  input.numberString();
+
+                valid = ValidationUtil.isInteger(numberString)
+                        && ValidationUtil.validLength(numberString);
+
+                output.retryMessage(valid);
+
+            }
+
+
+            PlayerBaseball playerBaseball = new PlayerBaseball(numberString);
 
             Score score = playerBaseball.play(comBaseball.getInningList());
 
             output.showResult(score);
 
-            gameStatus = playerBaseball.gameResult();
+            gameStatus = score.gameResult();
 
-            gameStatus = input.endGameInput(gameStatus.isEndGame());
+            String gameEndInput = input.gameEndInput(output.retryGameMessage(gameStatus.gameEndAudit()));
+
+            gameStatus = comBaseball.getGameResult(gameEndInput);
 
         }
     }

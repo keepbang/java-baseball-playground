@@ -8,4 +8,12 @@ public enum GameResult {
     }
 
     public boolean isReset() { return this == RESET; }
+
+    public boolean gameEndAudit(){
+        if(this == ENDGAME){
+            return true;
+        }
+        return false;
+    }
+
 }

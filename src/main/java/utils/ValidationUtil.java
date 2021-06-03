@@ -2,9 +2,12 @@ package utils;
 
 import java.util.stream.Stream;
 
-public class ValidationUtil implements ConstantValue {
+import static utils.ConstantValue.*;
 
-    public static boolean validNum(int num) { return Stream.of(num).allMatch(n -> n >= MIN_NUM && n <= MAX_NUM); }
+public class ValidationUtil{
+
+
+    public static boolean validNum(int num) { return Stream.of(num).allMatch(n -> n >= MIN_NUM && n < MAX_NUM); }
 
     public static boolean validLength(String numberString) { return numberString.length() == NUMBER_LENGTH; }
 

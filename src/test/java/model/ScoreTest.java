@@ -56,8 +56,8 @@ class ScoreTest {
     }
 
     Score createBaseball(String s1, String s2){
-        Baseball computer = new PlayerBaseball(s1);
-        Baseball player = new PlayerBaseball(s2);
+        PlayerBaseball computer = new PlayerBaseball(s1);
+        PlayerBaseball player = new PlayerBaseball(s2);
 
         return player.play(computer.getInningList());
     }

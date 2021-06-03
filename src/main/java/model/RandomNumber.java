@@ -3,6 +3,8 @@ package model;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+import static utils.ConstantValue.*;
+
 public class RandomNumber{
 
     public String getNumberString(){
@@ -19,9 +21,9 @@ public class RandomNumber{
 
     public static String createRandomNumbers() {
         return ThreadLocalRandom.current()
-                .ints(1,10)
+                .ints( MIN_NUM,MAX_NUM)
                 .distinct()
-                .limit(3)
+                .limit(MAX_ROUND)
                 .mapToObj(String::valueOf)
                 .collect(Collectors.joining());
     }

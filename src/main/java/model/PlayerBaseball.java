@@ -2,28 +2,32 @@ package model;
 
 import java.util.List;
 
-import static model.GameResult.CONTINUE;
-import static model.GameResult.ENDGAME;
+import static model.ScoreStatus.NOTHING;
 
 public class PlayerBaseball extends Baseball {
 
-    private Score score;
-
     public PlayerBaseball(String numberString){
         this.createBaseball(numberString);
-        this.score = new Score();
     }
 
-    @Override
-    public Score play(List<Inning> inningList) {
-        this.score = super.play(inningList);
+    public Score play(List<Inning> comInningList){
+        Score score = new Score();
+        for(Inning comInning : comInningList){
+            ScoreStatus status = this.play(comInning);
+            score.addBall(status);
+            score.addStrike(status);
+        }
+
         return score;
     }
 
-    public GameResult gameResult() {
-        if(score.isGameEnd()){
-            return ENDGAME;
-        }
-        return CONTINUE;
+    public ScoreStatus play(Inning comInning) {
+        return super.getInningList().stream()
+                .map(myInning -> myInning.play(comInning))
+                .filter(ScoreStatus::isNotNoting)
+                .findFirst()
+                .orElse(NOTHING);
     }
+
+
 }
