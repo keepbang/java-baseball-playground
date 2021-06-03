@@ -12,7 +12,7 @@ public class BaseballGame {
         
         while(!gameStatus.isEndGame()) {
 
-            gameStatus = comBaseball.resetBall(gameStatus);
+            comBaseball.resetBall(gameStatus);
 
             String number = input.numberString();
 

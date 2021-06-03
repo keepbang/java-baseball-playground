@@ -29,10 +29,11 @@ public class BaseballTest implements ConstantValue {
 
     @Test
     void 게임_결과_확인_검증(){
-        ComBaseball computer = new ComBaseball(RandomNumber.getInstance());
+        PlayerBaseball computer = new PlayerBaseball(RandomNumber.getInstance());
         PlayerBaseball player = new PlayerBaseball("425");
 
+        player.play(computer.getInningList());
 
-        assertThat(player.play(computer)).isIn(GameResult.CONTINUE,GameResult.ENDGAME);
+        assertThat(player.gameResult()).isIn(GameResult.CONTINUE,GameResult.ENDGAME);
     }
 }
