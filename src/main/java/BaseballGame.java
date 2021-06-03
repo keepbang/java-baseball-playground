@@ -6,7 +6,7 @@ public class BaseballGame {
     public static void main(String[] args) {
         OutputView output = new OutputView();
         InputVIew input = new InputVIew();
-        ComBaseball comBaseball = null;
+        ComBaseball comBaseball = new ComBaseball();
 
         GameResult gameStatus = GameResult.RESET;
         
@@ -18,11 +18,11 @@ public class BaseballGame {
 
             PlayerBaseball playerBaseball = new PlayerBaseball(number);
 
-            Score score = playerBaseball.play(comBaseball);
+            Score score = playerBaseball.play(comBaseball.getInningList());
 
             output.showResult(score);
 
-            gameStatus = score.gameResult();
+            gameStatus = playerBaseball.gameResult();
 
             gameStatus = input.endGameInput(gameStatus.isEndGame());
 

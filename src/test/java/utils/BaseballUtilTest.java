@@ -1,7 +1,6 @@
 package utils;
 
 import model.Inning;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BaseballUtilTest {
 
     @Test
-    @DisplayName("string_number를_Stream으로_변환")
     void string_number를_Stream으로_변환(){
 
 
