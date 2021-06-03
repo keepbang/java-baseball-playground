@@ -1,9 +1,12 @@
-import model.*;
-import utils.ValidationUtil;
-import view.InputVIew;
-import view.OutputView;
+package baseball;
 
-import java.util.Optional;
+import baseball.model.ComBaseball;
+import baseball.model.GameResult;
+import baseball.model.PlayerBaseball;
+import baseball.model.Score;
+import baseball.utils.ValidationUtil;
+import baseball.view.InputVIew;
+import baseball.view.OutputView;
 
 public class BaseballGame {
     public static void main(String[] args) {

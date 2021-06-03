@@ -1,8 +1,8 @@
-package utils;
+package baseball.utils;
 
 import java.util.stream.Stream;
 
-import static utils.ConstantValue.*;
+import static baseball.utils.ConstantValue.*;
 
 public class ValidationUtil{
 

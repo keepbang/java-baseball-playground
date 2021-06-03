@@ -1,6 +1,7 @@
 package utils;
 
-import model.RandomNumber;
+import baseball.model.RandomNumber;
+import baseball.utils.ValidationUtil;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

@@ -1,4 +1,4 @@
-package utils;
+package baseball.utils;
 
 public class ConstantValue {
     public static int MIN_NUM = 1;

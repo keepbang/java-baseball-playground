@@ -1,4 +1,4 @@
-package model;
+package baseball.model;
 
 public enum GameResult {
     RESET, ENDGAME, CONTINUE;

@@ -1,4 +1,4 @@
-package model;
+package baseball.model;
 
 
 //여기서 출력까지 할수있따

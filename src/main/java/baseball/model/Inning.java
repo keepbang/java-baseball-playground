@@ -1,6 +1,6 @@
-package model;
+package baseball.model;
 
-import static model.ScoreStatus.*;
+import static baseball.model.ScoreStatus.*;
 
 public class Inning {
     private int round;

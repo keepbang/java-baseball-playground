@@ -1,8 +1,8 @@
-package model;
+package baseball.model;
 
-import static model.GameResult.CONTINUE;
-import static model.GameResult.ENDGAME;
-import static utils.ConstantValue.THREE_STRIKE;
+import static baseball.model.GameResult.CONTINUE;
+import static baseball.model.GameResult.ENDGAME;
+import static baseball.utils.ConstantValue.THREE_STRIKE;
 
 //enum으로해볼것
 public class Score{

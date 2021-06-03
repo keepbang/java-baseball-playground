@@ -1,9 +1,10 @@
 package model;
 
+import baseball.model.Inning;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static model.ScoreStatus.*;
+import static baseball.model.ScoreStatus.*;
 
 public class InningTest {
 

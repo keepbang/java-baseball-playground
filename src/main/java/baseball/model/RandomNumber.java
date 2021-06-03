@@ -1,9 +1,9 @@
-package model;
+package baseball.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-import static utils.ConstantValue.*;
+import static baseball.utils.ConstantValue.*;
 
 public class RandomNumber{
 

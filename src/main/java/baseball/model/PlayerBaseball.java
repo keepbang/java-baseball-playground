@@ -1,8 +1,8 @@
-package model;
+package baseball.model;
 
 import java.util.List;
 
-import static model.ScoreStatus.NOTHING;
+import static baseball.model.ScoreStatus.NOTHING;
 
 public class PlayerBaseball extends Baseball {
 
