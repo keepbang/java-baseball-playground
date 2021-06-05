@@ -1,10 +1,10 @@
 package model;
 
-import baseball.model.GameResult;
-import baseball.model.Inning;
-import baseball.model.PlayerBaseball;
-import baseball.model.RandomNumber;
+import baseball.model.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,30 +13,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseballTest{
 
-    @Test
-    void 게임플레이어_볼_생성(){
-        PlayerBaseball baseball = new PlayerBaseball("425");
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "425","123","938"
+    })
+    void 게임플레이어_볼_생성_성공(String numberString){
+        PlayerBaseball baseball = new PlayerBaseball(numberString);
 
-        List<Inning> inningList1 = baseball.getInningList();
-        List<Inning> inningList2 = new ArrayList<>();
-
-        inningList2.add(new Inning(1,4));
-        inningList2.add(new Inning(2,2));
-        inningList2.add(new Inning(3,5));
+        InningList inningList2 = new InningList(numberString);
 
         for (int i = 0; i < 3; i++) {
-            assertThat(inningList1.get(i).getRound()).isEqualTo(inningList2.get(i).getRound());
-            assertThat(inningList1.get(i).getRound()).isEqualTo(inningList2.get(i).getRound());
+            assertThat(baseball.getInningList().get(i).getRound())
+                    .isEqualTo(inningList2.getList().get(i).getRound());
+            assertThat(baseball.getInningList().get(i).getBatting())
+                    .isEqualTo(inningList2.getList().get(i).getBatting());
         }
     }
 
-    @Test
-    void 게임_결과_확인_검증(){
-        PlayerBaseball computer = new PlayerBaseball(RandomNumber.getInstance());
-        PlayerBaseball player = new PlayerBaseball("425");
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "327","231","879"
+    })
+    void 게임_결과_확인_검증(String numberString){
+        ComBaseball computer = new ComBaseball();
 
+        computer.resetBall(GameResult.RESET);
+        PlayerBaseball player = new PlayerBaseball(numberString);
 
-
-        assertThat(player.play(computer.getInningList()).gameResult()).isIn(GameResult.CONTINUE,GameResult.ENDGAME);
+        assertThat(player.play(computer).gameResult())
+                .isIn(GameResult.CONTINUE,GameResult.ENDGAME);
     }
 }

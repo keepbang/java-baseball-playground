@@ -1,67 +1,63 @@
 package model;
 
+import baseball.model.ComBaseball;
 import baseball.model.PlayerBaseball;
 import baseball.model.Score;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ScoreTest {
 
-    @Test
-    void 야구_점수_3볼(){
-        Score score = createBaseball("214","421");
-        assertEquals(score.ballCount(), 3);
+    @ParameterizedTest
+    @CsvSource({
+            "214,421,3,0",
+            "123,256,1,0",
+            "123,253,1,1",
+            "643,346,2,1",
+            "829,879,0,2"
+    })
+    @DisplayName("볼 스트라이크 카운팅 검")
+    void 야구_점수_점수_검증(String numberString1, String numberString2, int ballCount, int strikeCound){
+        Score score = createBaseball(numberString1,numberString2);
+        assertEquals(score.ballCount(), ballCount);
+        assertEquals(score.strikeCount(), strikeCound);
         assertThat(score.isGameEnd()).isFalse();
     }
 
-    @Test
-    void 야구_점수_1볼(){
-        Score score = createBaseball("123","256");
-        assertEquals(score.ballCount(), 1);
-        assertThat(score.isGameEnd()).isFalse();
-    }
-
-    @Test
-    void 야구_점수_1볼_1스트라이크(){
-        Score score = createBaseball("123","253");
-
-        assertEquals(score.ballCount(), 1);
-        assertEquals(score.strikeCount(), 1);
-        assertThat(score.isGameEnd()).isFalse();
-    }
-
-    @Test
-    void 야구_점수_2볼_1스트라이크(){
-        Score score = createBaseball("643","346");
-
-        assertEquals(score.ballCount(), 2);
-        assertEquals(score.strikeCount(), 1);
-        assertThat(score.isGameEnd()).isFalse();
-    }
-
-    @Test
-    void 야구_점수_낫싱(){
-        Score score = createBaseball("123","456");
-
+    @ParameterizedTest
+    @CsvSource({
+            "123,456"
+    })
+    void 야구_점수_낫싱(String numberString1, String numberString2){
+        Score score = createBaseball(numberString1, numberString2);
         assertThat(score.isNothing()).isTrue();
         assertThat(score.isGameEnd()).isFalse();
     }
 
-    @Test
-    void 야구_점수_3스트라이크(){
-        Score score = createBaseball("345","345");
-
-        assertEquals(score.strikeCount(), 3);
+    @ParameterizedTest
+    @CsvSource({
+            "345,345,3"
+    })
+    @DisplayName("3 스트라이크 검증(게임종료)")
+    void 야구_점수_3스트라이크(String numberString1, String numberString2, int strikeCount){
+        Score score = createBaseball(numberString1, numberString2);
+        assertEquals(score.strikeCount(), strikeCount);
         assertThat(score.isGameEnd()).isTrue();
     }
 
     Score createBaseball(String s1, String s2){
-        PlayerBaseball computer = new PlayerBaseball(s1);
+        ComBaseball computer = new ComBaseball();
+        computer.createBaseball(s1);
+
         PlayerBaseball player = new PlayerBaseball(s2);
 
-        return player.play(computer.getInningList());
+        return player.play(computer);
     }
 
 }

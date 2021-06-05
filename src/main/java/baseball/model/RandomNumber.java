@@ -7,19 +7,21 @@ import static baseball.utils.ConstantValue.*;
 
 public class RandomNumber{
 
+    private RandomNumber(){}
+
     public String getNumberString(){
         return createRandomNumbers();
     }
 
-    private static class Cache {
+    private static class  NumberHolder{
         public static final RandomNumber randomNumber = new RandomNumber();
     }
 
-    public static String getInstance(){
-        return Cache.randomNumber.getNumberString();
+    public static RandomNumber getInstance(){
+        return NumberHolder.randomNumber;
     }
 
-    public static String createRandomNumbers() {
+    private String createRandomNumbers() {
         return ThreadLocalRandom.current()
                 .ints( MIN_NUM,MAX_NUM)
                 .distinct()

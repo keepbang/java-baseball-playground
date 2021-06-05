@@ -1,12 +1,45 @@
 package baseball.model;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-//여기서 출력까지 할수있따
 //Map형태로 뽑을 수있다(values()사용)
 public enum ScoreStatus {
-    STRIKE, NOTHING, BALL;
+    BALL{
+        @Override
+        public String result(Score score) {
+            if(score.ballCount() != 0){
+                return score.ballCount() + "볼 ";
+            }
+            return "";
+        }
+    }
+    , STRIKE{
+        @Override
+        public String result(Score score) {
+            if(score.strikeCount() != 0){
+                return score.strikeCount() + "스트라이크 ";
+            }
+            return "";
+        }
+    }
+    , NOTHING{
+        @Override
+        public String result(Score score) {
+            if(score.isNothing()){
+                return "Nothing";
+            }
+            return "";
+        }
+    };
 
-    //abstract 사용
+    abstract public String result(Score score);
+
+    public static Stream<String> getScoreStatus(Score score){
+        return Arrays.stream(ScoreStatus.values())
+                .map(scoreStatus -> scoreStatus.result(score));
+
+    }
 
     public boolean isBall(){
         return this == BALL;
@@ -17,4 +50,6 @@ public enum ScoreStatus {
     public boolean isNotNoting() {
         return this != NOTHING;
     }
+
+
 }

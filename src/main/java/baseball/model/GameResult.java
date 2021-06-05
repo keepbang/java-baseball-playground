@@ -15,5 +15,16 @@ public enum GameResult {
         }
         return false;
     }
+    public static GameResult getGameResult(String input) {
+        if(input.isEmpty()){
+            return CONTINUE;
+        }
+
+        if(input.equals("1")){
+            return RESET;
+        }
+
+        return ENDGAME;
+    }
 
 }

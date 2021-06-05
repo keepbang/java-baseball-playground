@@ -7,7 +7,7 @@ public class InputVIew {
     private final Scanner scanner = new Scanner(System.in);
 
     public String numberString(){
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public String gameEndInput(boolean audit){

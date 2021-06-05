@@ -14,7 +14,7 @@ public class RandomNumberTest {
     void 랜덤_숫자_생성(int loop){
 
         for (int i = 0; i < loop; i++) {
-            String numberStr = RandomNumber.createRandomNumbers();
+            String numberStr = RandomNumber.getInstance().getNumberString();
 
             assertThat(ValidationUtil.validLength(numberStr)).isTrue();
         }

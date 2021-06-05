@@ -4,12 +4,13 @@ import baseball.model.ComBaseball;
 import baseball.model.GameResult;
 import baseball.model.PlayerBaseball;
 import baseball.model.Score;
-import baseball.utils.ValidationUtil;
 import baseball.view.InputVIew;
 import baseball.view.OutputView;
 
+import static baseball.model.ScoreStatus.getScoreStatus;
+
 public class BaseballGame {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         OutputView output = new OutputView();
         InputVIew input = new InputVIew();
         ComBaseball comBaseball = new ComBaseball();
@@ -20,28 +21,12 @@ public class BaseballGame {
 
             comBaseball.resetBall(gameStatus);
 
-            boolean valid = false;
-            String numberString = "";
-
             output.number();
+            PlayerBaseball playerBaseball = new PlayerBaseball(input.numberString());
 
-            while(!valid) {
+            Score score = playerBaseball.play(comBaseball);
 
-                numberString =  input.numberString();
-
-                valid = ValidationUtil.isInteger(numberString)
-                        && ValidationUtil.validLength(numberString);
-
-                output.retryMessage(valid);
-
-            }
-
-
-            PlayerBaseball playerBaseball = new PlayerBaseball(numberString);
-
-            Score score = playerBaseball.play(comBaseball.getInningList());
-
-            output.showResult(score);
+            output.showResult(getScoreStatus(score));
 
             gameStatus = score.gameResult();
 
