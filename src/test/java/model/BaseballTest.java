@@ -32,10 +32,10 @@ public class BaseballTest{
     void 게임_결과_확인_검증(String numberString){
         ComBaseball computer = new ComBaseball();
 
-        computer.resetBall(GameResult.RESET);
+        computer.resetBall(GameStatus.RESET);
         PlayerBaseball player = new PlayerBaseball(numberString);
 
         assertThat(player.play(computer).gameResult())
-                .isIn(GameResult.CONTINUE,GameResult.ENDGAME);
+                .isIn(GameStatus.CONTINUE, GameStatus.ENDGAME);
     }
 }

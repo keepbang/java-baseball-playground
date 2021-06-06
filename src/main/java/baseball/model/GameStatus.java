@@ -1,7 +1,7 @@
 package baseball.model;
 
-public enum GameResult {
-    RESET, ENDGAME, CONTINUE;
+public enum GameStatus {
+    RESET, ENDGAME , CONTINUE;
 
     public boolean isEndGame(){
         return this == ENDGAME;
@@ -15,7 +15,7 @@ public enum GameResult {
         }
         return false;
     }
-    public static GameResult getGameResult(String input) {
+    public static GameStatus getGameResult(String input) {
         if(input.isEmpty()){
             return CONTINUE;
         }

@@ -12,7 +12,7 @@ public class InputVIew {
 
     public String gameEndInput(boolean audit){
         if(audit){
-            return scanner.next();
+            return scanner.nextLine();
         }
         return "";
     }

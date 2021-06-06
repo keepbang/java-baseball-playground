@@ -1,12 +1,13 @@
 package baseball;
 
 import baseball.model.ComBaseball;
-import baseball.model.GameResult;
+import baseball.model.GameStatus;
 import baseball.model.PlayerBaseball;
 import baseball.model.Score;
 import baseball.view.InputVIew;
 import baseball.view.OutputView;
 
+import static baseball.model.GameStatus.getGameResult;
 import static baseball.model.ScoreStatus.getScoreStatus;
 
 public class BaseballGame {
@@ -15,7 +16,7 @@ public class BaseballGame {
         InputVIew input = new InputVIew();
         ComBaseball comBaseball = new ComBaseball();
 
-        GameResult gameStatus = GameResult.RESET;
+        GameStatus gameStatus = GameStatus.RESET;
         
         while(!gameStatus.isEndGame()) {
 
@@ -32,7 +33,7 @@ public class BaseballGame {
 
             String gameEndInput = input.gameEndInput(output.retryGameMessage(gameStatus.gameEndAudit()));
 
-            gameStatus = comBaseball.getGameResult(gameEndInput);
+            gameStatus = getGameResult(gameEndInput);
 
         }
     }

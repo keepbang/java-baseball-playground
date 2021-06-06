@@ -1,7 +1,7 @@
 package baseball.model;
 
-import static baseball.model.GameResult.CONTINUE;
-import static baseball.model.GameResult.ENDGAME;
+import static baseball.model.GameStatus.CONTINUE;
+import static baseball.model.GameStatus.ENDGAME;
 import static baseball.utils.ConstantValue.THREE_STRIKE;
 
 public class Score {
@@ -36,7 +36,7 @@ public class Score {
         return strikeCount() >= THREE_STRIKE;
     }
 
-    public GameResult gameResult() {
+    public GameStatus gameResult() {
         if (this.isGameEnd()) {
             return ENDGAME;
         }
