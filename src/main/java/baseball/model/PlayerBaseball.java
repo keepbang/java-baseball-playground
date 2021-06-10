@@ -11,7 +11,7 @@ public class PlayerBaseball extends Baseball {
             throw new NumberFormatException("잘못된 숫자를 입력하였습니다.");
         }
 
-        this.createBaseball(numberString);
+        super.createBaseball(numberString);
     }
 
     public boolean validationNumberString(String numberString){
