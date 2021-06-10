@@ -5,9 +5,8 @@ import calculator.view.InputView;
 
 public class CalculatorMain {
     public static void main(String[] args) {
-        String inputString = InputView.inputString();
 
-        Calculator calculator = new Calculator(inputString);
+        Calculator calculator = new Calculator(InputView.inputString());
 
         System.out.println(calculator.runProcess());
     }

@@ -8,6 +8,6 @@ public class ValidationUtils {
     }
 
     public static boolean isOperator(String orperator){
-        return orperator.matches("[-*/+]{0,1}$");
+        return orperator.matches("[-*/+]?$");
     }
 }

@@ -27,7 +27,7 @@ public class ValidationUtilsTest {
             ,"+-,false","*-1,false"," /kcj,false","-+*/,false"
             ,"3,false","a,false"
     })
-    @DisplayName("연자사 검증")
+    @DisplayName("연산자 검증")
     void operatorCheck(String operator, boolean valid){
         assertThat(ValidationUtils.isOperator(operator)).isEqualTo(valid);
     }
