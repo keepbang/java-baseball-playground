@@ -3,7 +3,6 @@ package baseball.model;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-//Map형태로 뽑을 수있다(values()사용)
 public enum ScoreStatus {
     BALL{
         @Override
